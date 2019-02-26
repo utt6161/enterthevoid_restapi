@@ -1,11 +1,31 @@
 {
-  "name": "enterthevoid",
-  "version": "0.5.0",
-  "dependencies": {
-    "body-parser": "^1.16.0",
-    "express": "^4.14.0"
-  },
+  "name": "enterthevoid_restapi",
+  "version": "0.5.147",
+  "description": "idk",
+  "main": "index.js",
   "scripts": {
-    "start": "app.js"
-  }
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utt6161/enterthevoid_restapi.git"
+  },
+  "keywords": [
+    "i",
+    "want",
+    "to",
+    "sleep"
+  ],
+  "author": "ut61a",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/utt6161/enterthevoid_restapi/issues"
+  },
+  "homepage": "https://github.com/utt6161/enterthevoid_restapi#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "request": "^2.88.0"
+  },
 }
