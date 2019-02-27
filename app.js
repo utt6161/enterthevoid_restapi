@@ -1,9 +1,10 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var mysql = require('mysql');
+
 var app = express();
 
 var port = process.env.PORT || 3000;
-
-var mysql = require('mysql');
 
 var con = mysql.createConnection({
   host: "u615qyjzybll9lrm.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
@@ -11,8 +12,10 @@ var con = mysql.createConnection({
   password: "pedbphao75mx0qu5",
   database: "cyjd3gv7n57trq48"
 });
-app.use(express.json());         // to support JSON-encoded bodies
-// app.use(express.urlencoded());   // to support URL-encoded bodies
+
+app.use(bodyParser.json());         // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));   // to support URL-encoded bodies
+
 app.get('/', function (req, res) {
   con.connect(function(err) {
   if (err) throw err;
