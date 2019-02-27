@@ -16,7 +16,7 @@ var con = mysql.createConnection({
 app.get('/', function (req, res) {
   con.connect(function(err) {
   if (err) throw err;
-  con.query("SELECT * FROM scores ORDER BY value", function (err, result, fields) {
+  con.query("SELECT * FROM scores ORDER BY value ASC", function (err, result, fields) {
     res.send(result);
   });
 });
