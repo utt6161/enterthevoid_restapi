@@ -31,7 +31,6 @@ app.post('/', function(req, res){
   var name = req.body.name,
       value = req.body.value;
       id = req.body.id;
-  if (err) throw err;
   con.query("SELECT COUNT(*) FROM scores", function (err, result, fields) {
     if((result[0][0] == 10) && (id == 0)){ // result of COUNT(*)
       res.send(0);
