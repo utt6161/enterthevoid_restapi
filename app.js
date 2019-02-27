@@ -12,7 +12,7 @@ var con = mysql.createConnection({
   database: "cyjd3gv7n57trq48"
 });
 app.use(express.json());         // to support JSON-encoded bodies
-app.use(express.urlencoded());   // to support URL-encoded bodies
+// app.use(express.urlencoded());   // to support URL-encoded bodies
 app.get('/', function (req, res) {
   con.connect(function(err) {
   if (err) throw err;
