@@ -16,7 +16,7 @@ var con = mysql.createConnection({
 app.get('/', function (req, res) {
   con.connect(function(err) {
   if (err) throw err;
-  con.query("SELECT name, address FROM customers", function (err, result, fields) {
+  con.query("SELECT * FROM *", function (err, result, fields) {
     if (err) throw err;
     res.send(fields);
   });
