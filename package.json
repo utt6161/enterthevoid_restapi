@@ -2,7 +2,7 @@
   "name": "enterthevoid_restapi",
   "version": "0.5.147",
   "description": "idk",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
@@ -10,12 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/utt6161/enterthevoid_restapi.git"
   },
-  "keywords": [
-    "i",
-    "want",
-    "to",
-    "sleep"
-  ],
   "author": "ut61a",
   "license": "ISC",
   "bugs": {

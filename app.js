@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
   con.connect(function(err) {
   if (err) throw err;
   con.query("SELECT * FROM scores", function (err, result, fields) {
-    res.send(fields);
+    res.send(result);
   });
 });
 });
