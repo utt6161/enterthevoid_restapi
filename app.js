@@ -17,9 +17,8 @@ app.use(bodyParser.json());         // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));   // to support URL-encoded bodies
 
 app.get('/', function (req, res) {
-  con.connect(function(err) {
-  if (err) throw err;
   con.query("SELECT * FROM scores ORDER BY value DESC", function (err, result, fields) {
+    if (err) throw err;
     res.send(result);
   });
 
@@ -27,7 +26,6 @@ app.get('/', function (req, res) {
   //   res.send(result);
   // });
 
-});
 });
 
 app.post('/', function(req, res){
