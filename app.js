@@ -13,8 +13,7 @@ var con = mysql.createConnection({
   database: "cyjd3gv7n57trq48"
 });
 
-app.use(bodyParser.json());         // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({ extended: true }));   // to support URL-encoded bodies
+app.use(bodyParser.json());  // to support JSON-encoded bodies
 
 app.get('/', function (req, res) {
   con.query("SELECT * FROM scores ORDER BY value DESC", function (err, result, fields) {
@@ -27,33 +26,36 @@ app.get('/', function (req, res) {
   // });
 
 });
-
+// function retrieve(result){
+//   qResult = result;
+// }
 app.post('/', function(req, res){
   var name = req.body.name,
       value = req.body.value;
       id = req.body.id;
-  var qResult;
-      con.query("SELECT COUNT(*) FROM scores", function (err, result, fields) {
+  console.log(name +" " + value + " " + id);
+  con.query("SELECT COUNT(*) FROM scores", function (err, result, fields) {
     if (err) throw err;
-    qResult = result;
-  });
-  if((qResult[0][0] == 10) && (id == 0)){ // result of COUNT(*)
-    res.send(0);
-  }
-  else{
-    if(id!=0){
-      con.query("UPDATE scores SET name = " + name + ", value = " + value + "WHERE id = " + id, function (err, result, fields) {
-        if (err) throw err;
-        console.log("1 record updated");
-      });
+    if((result[0]["COUNT(*)"] == 10) && (id == 0)){ // result of COUNT(*)
+      res.sendStatus(423);
     }
     else{
-      con.query("INSERT INTO scores (name, value) VALUES ('"+ name + "', '" + value + "')", function (err, result, fields) {
-        if (err) throw err;
-        console.log("1 record inserted");
-      });
+      if(id!=0){
+        con.query(`UPDATE scores SET name = "${name}", value = ${value} WHERE id = ${id}`, function (err, result, fields) {
+          if (err) throw err;
+          res.sendStatus(200);
+          console.log("1 record updated");
+        });
+      }
+      else{
+        con.query("INSERT INTO scores (name, value) VALUES ('"+ name + "', '" + value + "')", function (err, result, fields) {
+          if (err) throw err;
+          res.sendStatus(200);
+          console.log("1 record inserted");
+        });
+      }
     }
-  }
+  });
 });
 
 app.listen(port, "0.0.0.0", function() {
