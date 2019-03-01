@@ -33,9 +33,27 @@ app.post('/', function(req, res){
       value = req.body.value;
       id = req.body.id;
   var qResult;
-      con.query("SELECT COUNT(*) FROM scores", function (err, result, fields) {
+  con.connect();
+  con.query("SELECT COUNT(*) FROM scores", function (err, result, fields) {
     if (err) throw err;
-    qResult = result;
+    con.end();
+    if((result[0][0] == 10) && (id == 0)){ // result of COUNT(*)
+      res.send(0);
+    }
+    else{
+      if(id!=0){
+        con.query("UPDATE scores SET name = " + name + ", value = " + value + "WHERE id = " + id, function (err, result, fields) {
+          if (err) throw err;
+          console.log("1 record updated");
+        });
+      }
+      else{
+        con.query("INSERT INTO scores (name, value) VALUES ('"+ name + "', '" + value + "')", function (err, result, fields) {
+          if (err) throw err;
+          console.log("1 record inserted");
+        });
+      }
+    }
   });
   if((qResult[0][0] == 10) && (id == 0)){ // result of COUNT(*)
     res.send(0);
