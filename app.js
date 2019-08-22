@@ -7,10 +7,10 @@ var app = express();
 var port = process.env.PORT || 3000;
 
 var con = mysql.createConnection({
-  host: "u615qyjzybll9lrm.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-  user: "iyvj67ll5omfb7dy",
-  password: "pedbphao75mx0qu5",
-  database: "cyjd3gv7n57trq48"
+  host: "*******zybll9lrm.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+  user: "**********",
+  password: "**********",
+  database: "**********"
 });
 
 app.use(bodyParser.json());  // to support JSON-encoded bodies
